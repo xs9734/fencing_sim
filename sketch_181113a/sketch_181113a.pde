@@ -2,11 +2,16 @@
 //                                         //
 //  A = Score Player 1 (Sword Sensor)      //
 //  D = Score Player 2 (Sword Sensor)      //
-//  W = Reseter (Button to Restart game)   //
+//  S = Reseter (Button to Restart game)   //
 //                                         //
 /////////////////////////////////////////////
 import processing.video.*;
+import ddf.minim.*;
+ 
+Minim minim;
+AudioPlayer song;
 Capture cam;
+
 PImage bg,spark,cam2;
 PFont Head;
 int p1=0;
@@ -18,9 +23,15 @@ int min=0;
 int msec=0;
 int sx=0;
 int sy=0;
+boolean pts=true;
 boolean start=true;
 void setup(){
-
+  
+  minim = new Minim(this);
+ 
+  song = minim.loadFile("assets/Operatic_3.mp3");
+  song.play();
+  
 frameRate(60);
  spark = loadImage("assets/line.png");
  bg = loadImage("assets/back.png");
@@ -65,6 +76,8 @@ void draw(){
 }
 
 void game(){
+  println(pts);
+  pts=true;
 background(bg);
   if(cam.available()) {
   cam.read();
@@ -74,18 +87,20 @@ background(bg);
   image(cam, 65,70);
   text("PLAYER 2",775,60);
   image(cam2,615,70);
+  timer();
 }
   
 void points(){
+
   if(p1==1 && p2==0){
   textAlign(CENTER);
-  text("Player 1 Scored a point",500,300);
-  text( "Player 1: " + p1pt + " Player 2: " + p2pt,500,600);
+  text("Player 1 Scored a point",500,500);
+  text( "Player 1: " + p1pt + " Player 2: " + p2pt,500,700);
   }
   else if(p2==1 && p1==0){
   textAlign(CENTER);
-  text("Player 2 Scored a point",500,300);
-  text( "Player 1: " + p1pt + " Player 2: " + p2pt,500,600);
+  text("Player 2 Scored a point",500,500);
+  text( "Player 1: " + p1pt + " Player 2: " + p2pt,500,700);
   }
   if(key == 'w' || key == 'W'){
   p1=0;
@@ -108,7 +123,6 @@ void keyReleased(){
   p1=1;
   p1pt++;
   points();
-
   }
   if(key == 'd' || key == 'D'){
         saveFrame("######.jpg"); 
@@ -116,7 +130,6 @@ void keyReleased(){
   p1=0;
   p2pt++;
   points();
-
   }
 }
 
@@ -135,4 +148,7 @@ void intro(){
   textSize(60);
   textAlign(LEFT);
   text("Interactive Experience",58,456);
+  textSize(40);
+    textAlign(CENTER);
+  text("Press Start Button to begin",500,700);
 }
