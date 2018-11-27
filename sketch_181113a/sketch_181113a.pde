@@ -42,25 +42,24 @@ void draw(){
     println(mouseX);
     println(mouseY);
     if(start==true){
-      p1pt=0;
-      p2pt=0;
-      intro();
+    p1pt=0;
+    p2pt=0;
+    intro();
     }
-    if(key == 'r' || key == 'R'){
-      start=false;
+    if(key == 's' || key == 'S'){
+    start=false;
     }
     if(start==false){
     game();
     if(key == 'a' || key == 'A'){
-      p2=0;
-      p1=1;
-      point();
+    p2=0;
+    p1=1;
+    points();
     }
     else if(key == 'd' || key == 'D'){
-      p1=0;
-      p2=1;
-      point();
-
+    p1=0;
+    p2=1;
+    points();
     }
     }
 }
@@ -77,8 +76,7 @@ background(bg);
   image(cam2,615,70);
 }
   
-void point(){
-  background(88);
+void points(){
   if(p1==1 && p2==0){
   textAlign(CENTER);
   text("Player 1 Scored a point",500,300);
@@ -105,16 +103,20 @@ void timer(){
 
 void keyReleased(){
   if(key == 'a' || key == 'A'){
+        saveFrame("######.jpg"); 
   p2=0;
   p1=1;
   p1pt++;
-  point();
+  points();
+
   }
   if(key == 'd' || key == 'D'){
+        saveFrame("######.jpg"); 
   p2=1;
   p1=0;
   p2pt++;
-  point();
+  points();
+
   }
 }
 
