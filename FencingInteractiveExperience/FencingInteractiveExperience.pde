@@ -23,6 +23,8 @@ int min=0;
 int msec=0;
 int sx=0;
 int sy=0;
+int sx2=0;
+int sy2=0;
 int millisecs;
 int seconds;
 int minutes;
