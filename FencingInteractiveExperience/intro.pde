@@ -1,4 +1,5 @@
 void intro(){
+  //UI//
   background(bg);
   image(spark,sx,sy);
   image(spark,sx2,sy2);

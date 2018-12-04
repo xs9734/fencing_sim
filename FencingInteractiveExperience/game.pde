@@ -1,7 +1,8 @@
 void game(){
-    background(bg);
-    image(spark,sx,sy);
-    image(spark,sx2,sy2);
+  //UI//
+  background(bg);
+  image(spark,sx,sy);
+  image(spark,sx2,sy2);
   sx=sx+10;
   if(sx>1000){
     sx = -400;
@@ -12,7 +13,6 @@ void game(){
     sx2 = -300;
     sy2 = int(random(100,900));
   }
-  println(pts);
   pts=true;
   if(cam.available()){
     cam.read();
@@ -23,5 +23,4 @@ void game(){
   text("PLAYER 2",775,60);
   image(cam2,615,70);
   timer();
-  
 }
