@@ -18,9 +18,6 @@ void game(){
     cam.read();
   }
   textAlign(CENTER);
-  text("PLAYER 1",225,60);
-  image(cam, 65,70);
-  text("PLAYER 2",775,60);
-  image(cam2,615,70);
+  image(cam, 180,60);
   timer();
 }
